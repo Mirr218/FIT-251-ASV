@@ -1,3 +1,5 @@
+.PHONY: clear check_fmt fmt test
+
 clear:
 	rm -rf *.o *.a *_test
 
@@ -7,21 +9,27 @@ check_fmt:
 fmt:
 	clang-format -style=LLVM -i `find -regex ".+\.[ch]"`
 
-# --- add
+test:
+	@for test_file in $$(ls *_test 2>/dev/null); do \
+		if [ -x "$$test_file" ]; then \
+			echo "Running $$test_file..."; \
+			./$$test_file || exit 1; \
+		else \
+			echo "$$test_file is not executable"; \
+		fi \
+	done
 
-add.o: add.h add.c
-	gcc -g -c add.c -o add.o
+%_test: %_test.o %.a
+	gcc -g -static -o $@ $< $*.a
 
-add.a: add.o
-	ar rc add.a add.o
+%.a: %.o
+	ar rc $@ $<
 
-add_test.o: add_test.c
-	gcc -g -c add_test.c -o add_test.o
+%.o: %.c %.h
+	gcc -g -c $< -o $@
 
 add_test: add_test.o add.a
-	gcc -g -static -o add_test add_test.o add.a
-
-# ---
-
-test: add_test
-	./add_test
+math_test: math_test.o math.a
+integral_test: integral_test.o integral.a
+list_test: list_test.o list.a
+stack_test: stack_test.o stack.a
