@@ -25,7 +25,7 @@ test:
 %.a: %.o
 	ar rc $@ $<
 
-%.o: %.c %.h
+%.o: %.c
 	gcc -g -c $< -o $@
 
 add_test: add_test.o add.a
