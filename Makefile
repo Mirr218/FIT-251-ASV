@@ -27,9 +27,3 @@ test:
 
 %.o: %.c
 	gcc -g -c $< -o $@
-
-add_test: add_test.o add.a
-math_test: math_test.o math.a
-integral_test: integral_test.o integral.a
-list_test: list_test.o list.a
-stack_test: stack_test.o stack.a
