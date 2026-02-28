@@ -20,7 +20,5 @@ jobs:
       - name: Check formatting
         run: make check_fmt
 
-      - name: Build and run tests
-        run: |
-          make add_test
-          make test
+      - name: Run tests
+        run: make test
