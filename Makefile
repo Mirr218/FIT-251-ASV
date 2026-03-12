@@ -4,10 +4,10 @@ clear:
 	rm -rf *.o *.a *_test
 
 check_fmt:
-	clang-format -style=LLVM -i `find -regex ".+\.[ch]"` --dry-run --Werror
+	clang-format -style=LLVM -i `find . -name "*.c" -o -name "*.h"` --dry-run --Werror
 
 fmt:
-	clang-format -style=LLVM -i `find -regex ".+\.[ch]"`
+	clang-format -style=LLVM -i `find . -name "*.c" -o -name "*.h"`
 
 test:
 	@for test_file in $$(ls *_test 2>/dev/null); do \
