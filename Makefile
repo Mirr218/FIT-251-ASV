@@ -27,3 +27,5 @@ test:
 
 %.o: %.c
 	gcc -g -c $< -o $@
+
+llist_test: list_test.o list.a
