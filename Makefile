@@ -27,3 +27,5 @@ test:
 
 %.o: %.c
 	gcc -g -c $< -o $@
+
+stack_test: stack_test.o stack.a
