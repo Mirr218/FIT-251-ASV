@@ -20,10 +20,12 @@ test:
 	done
 
 %_test: %_test.o %.a
-	gcc -g -static -o $@ $< $*.a
+	gcc -g -static -o $@ $< $*.a -lm
 
 %.a: %.o
 	ar rc $@ $<
 
 %.o: %.c
 	gcc -g -c $< -o $@
+	
+korni_test: korni_test.o korni.a
