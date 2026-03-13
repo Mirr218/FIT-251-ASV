@@ -19,6 +19,9 @@ jobs:
 
       - name: Check formatting
         run: make check_fmt
+        
+      - name: Build all tests
+        run: make korni_test
 
       - name: Run tests
         run: make test
