@@ -1,0 +1,8 @@
+*.o
+*.a
+task5_integral/test_integral
+
+*~
+*.swp
+*.save
+*~
