@@ -22,3 +22,6 @@ jobs:
 
       - name: Run tests
         run: make test
+        
+      - name: Build list_test
+        run: make list_test
