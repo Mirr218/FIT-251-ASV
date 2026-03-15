@@ -20,7 +20,7 @@ test:
 	done
 
 %_test: %_test.o %.a
-	gcc -g -static -o $@ $< $*.a -lm
+	gcc -g -o $@ $< $*.a -lm
 
 %.a: %.o
 	ar rc $@ $<

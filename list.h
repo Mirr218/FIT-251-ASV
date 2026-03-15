@@ -5,9 +5,10 @@
 #include <stdlib.h>
 
 // Структура узла
-struct Node {
-  int y;
-  struct Node *next;
+struct Node
+{
+    int y;
+    struct Node *next;
 };
 
 // Объявления функций
@@ -19,6 +20,5 @@ struct Node *f4(struct Node *start, int n);
 int f5(struct Node *start, int n);
 int f6(struct Node *start);
 void f7(struct Node *start);
-void f8(struct Node *start);
 
 #endif
