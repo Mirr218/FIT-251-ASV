@@ -5,10 +5,9 @@
 #include <stdlib.h>
 
 // Структура узла
-struct Node
-{
-    int y;
-    struct Node *next;
+struct Node {
+  int y;
+  struct Node *next;
 };
 
 // Объявления функций
