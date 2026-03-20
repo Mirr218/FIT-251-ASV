@@ -1,0 +1,7 @@
+*.o
+*.a
+
+*_test
+
+*.tmp
+.DS_Store

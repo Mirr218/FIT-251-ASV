@@ -27,3 +27,5 @@ test:
 
 %.o: %.c
 	gcc -g -c $< -o $@
+
+korni_test: korni_test.o korni.a
