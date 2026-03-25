@@ -1,0 +1,3 @@
+echo "list.a" >> .gitignore
+echo "list_test" >> .gitignore
+echo "*.o" >> .gitignore
