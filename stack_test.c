@@ -1,53 +1,83 @@
+#include <assert.h>
 #include "stack.h"
 
-int main() {
-  Stack s;
-  init_stack(&s);
+#define SUCCESS_STACK 1
+#define ERROR_STACK 0
 
-  if (!is_empty(&s)) {
-    return 1;
-  }
+void test_init_stack_is_empty() {
+    Stack s;
 
-  if (!push(&s, 10)) {
-    return 1;
-  }
-  if (!push(&s, 20)) {
-    return 1;
-  }
+    init_stack(&s, 10);
 
-  if (is_empty(&s)) {
-    return 1;
-  }
+    assert(is_empty(&s));
 
-  int val;
+    destroy_stack(&s);
+}
 
-  if (!pop(&s, &val) || val != 20) {
-    return 1;
-  }
+void test_push_pop_lifo_order() {
+    Stack s;
+    int val;
 
-  if (!pop(&s, &val) || val != 10) {
-    return 1;
-  }
+    init_stack(&s, 10);
+    push(&s, 10);
+    push(&s, 20);
 
-  if (!is_empty(&s)) {
-    return 1;
-  }
+    pop(&s, &val);
+    assert(val == 20);
 
-  init_stack(&s);
-  int i;
-  for (i = 0; i < MAX_SIZE; ++i) {
-    if (!push(&s, i)) {
-      return 1;
+    pop(&s, &val);
+    assert(val == 10);
+    assert(is_empty(&s));
+
+    destroy_stack(&s);
+}
+
+void test_push_until_full() {
+    Stack s;
+    int i;
+
+    init_stack(&s, MAX_SIZE);
+    for (i = 0; i < MAX_SIZE; ++i) {
+        push(&s, i);
     }
-  }
-  if (push(&s, 123)) {
-    return 1;
-  }
 
-  init_stack(&s);
-  if (pop(&s, &val)) {
-    return 1;
-  }
+    int result = push(&s, 123);
 
-  return 0;
+    assert(result == ERROR_STACK);
+
+    destroy_stack(&s);
+}
+
+void test_pop_from_empty_returns_error() {
+    Stack s;
+    int val;
+
+    init_stack(&s, 10);
+
+    int result = pop(&s, &val);
+
+    assert(result == ERROR_STACK);
+
+    destroy_stack(&s);
+}
+
+void test_invalid_size_initialization() {
+    Stack s;
+
+    init_stack(&s, 0);
+
+    assert(s.data == NULL);
+    assert(s.size == 0);
+    assert(is_empty(&s));
+
+    destroy_stack(&s);
+}
+
+int main() {
+    test_init_stack_is_empty();
+    test_push_pop_lifo_order();
+    test_push_until_full();
+    test_pop_from_empty_returns_error();
+    test_invalid_size_initialization();
+    return 0;
 }
