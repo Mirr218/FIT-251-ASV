@@ -1,5 +1,6 @@
-#include "stack.h"
 #include <stdlib.h>
+
+#include "stack.h"
 
 #define SUCCESS_STACK 1
 #define ERROR_STACK 0

@@ -1,6 +1,7 @@
-#include "stack.h"
-#include <stddef.h>
 #include <assert.h>
+#include <stddef.h>
+
+#include "stack.h"
 
 #define SUCCESS_STACK 1
 #define ERROR_STACK 0
