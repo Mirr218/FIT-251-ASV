@@ -4,9 +4,9 @@
 #define MAX_SIZE 100
 
 typedef struct {
-    int *data;
-    int top;
-    int size;
+  int *data;
+  int top;
+  int size;
 } Stack;
 
 void init_stack(Stack *s, int size);
