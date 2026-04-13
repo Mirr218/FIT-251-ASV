@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stddef.h>
 #include <assert.h>
 
 #define SUCCESS_STACK 1
