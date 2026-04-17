@@ -26,3 +26,9 @@ test:
 
 %.o: %.c
 	gcc -g -c $< -o $@
+task5_integral/libintegral.a: task5_integral/src/integral.o
+	ar rcs $@ $^
+task5_integral/src/integral.o: task5_integral/src/integral.c task5_integral/include/integral.h
+	gcc -c -Itask5_integral/include task5_integral/src/integral.c -o $@
+task5_integral/test_integral: task5_integral/tests/test_integral.c task5_integral/libintegral.a
+	gcc -Itask5_integral/include -Ltask5_integral -lintegral task5_integral/tests/test_integral.c -lm -o $@
