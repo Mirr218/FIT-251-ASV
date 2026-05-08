@@ -1,7 +1,8 @@
 #include "integral.h"
 #include <stddef.h>
 
-double trap_rule(double (*f)(double), double left, double right, int number_of_steps) {
+double trap_rule(double (*f)(double), double left, double right,
+                 int number_of_steps) {
   if (number_of_steps <= 0 || f == NULL || left > right) {
     return 0.0;
   }

@@ -16,8 +16,8 @@ int test_square() {
 }
 
 int test_line() {
-  double res = trap_rule(l, 0.0, 1.0, 1000);`
-  return approx_equal(res, 2.0, 1e-6);
+  double res = trap_rule(l, 0.0, 1.0, 1000);
+  ` return approx_equal(res, 2.0, 1e-6);
 }
 
 int test_constant() {
