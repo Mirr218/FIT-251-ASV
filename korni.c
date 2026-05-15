@@ -3,44 +3,43 @@
 #include <stdlib.h>
 
 int equals_with_precision(double expected, double actual, int precision) {
-    double epsilon = pow(10, -precision);
-    return fabs(expected - actual) < epsilon;
+  double epsilon = pow(10, -precision);
+  return fabs(expected - actual) < epsilon;
 }
 
 QuadraticResult quadraticRoots(double a, double b, double c) {
-    QuadraticResult result = {0, {0, 0}};
+  QuadraticResult result = {0, {0, 0}};
 
-    if (fabs(a) < EPSILON_FOR_A) {
-        result.num_roots = 0;
-        return result;
-    }
-
-    double discriminant = b * b - 4 * a * c;
-
-    if (discriminant < 0) {
-        result.num_roots = 0;
-    } else if (discriminant == 0) {
-        result.num_roots = 1;
-        result.roots[0] = -b / (2 * a);
-    } else {
-        result.num_roots = 2;
-        double sqrt_discriminant = sqrt(discriminant);
-        double q;
-        if (b >= 0) {
-            q = -0.5 * (b + sqrt_discriminant);
-            result.roots[0] = q / a;
-            result.roots[1] = c / q;
-        } else {
-            q = -0.5 * (b - sqrt_discriminant);
-            result.roots[0] = q / a;
-            result.roots[1] = c / q;
-        }
-        if (result.roots[0] > result.roots[1]) {
-            double temp = result.roots[0];
-            result.roots[0] = result.roots[1];
-            result.roots[1] = temp;
-        }
-    }
+  if (fabs(a) < EPSILON_FOR_A) {
+    result.num_roots = 0;
     return result;
   }
 
+  double discriminant = b * b - 4 * a * c;
+
+  if (discriminant < 0) {
+    result.num_roots = 0;
+  } else if (discriminant == 0) {
+    result.num_roots = 1;
+    result.roots[0] = -b / (2 * a);
+  } else {
+    result.num_roots = 2;
+    double sqrt_discriminant = sqrt(discriminant);
+    double q;
+    if (b >= 0) {
+      q = -0.5 * (b + sqrt_discriminant);
+      result.roots[0] = q / a;
+      result.roots[1] = c / q;
+    } else {
+      q = -0.5 * (b - sqrt_discriminant);
+      result.roots[0] = q / a;
+      result.roots[1] = c / q;
+    }
+    if (result.roots[0] > result.roots[1]) {
+      double temp = result.roots[0];
+      result.roots[0] = result.roots[1];
+      result.roots[1] = temp;
+    }
+  }
+  return result;
+}
