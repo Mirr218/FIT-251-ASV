@@ -13,3 +13,4 @@ QuadraticResult quadraticRoots(double a, double b, double c);\
 int equals_with_precision(double expected, double actual, int precision);
 
 #endif
+

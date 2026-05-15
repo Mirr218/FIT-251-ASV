@@ -42,4 +42,5 @@ QuadraticResult quadraticRoots(double a, double b, double c) {
         }
     }
     return result;
-}
+  }
+
